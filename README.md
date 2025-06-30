@@ -1,36 +1,114 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 💸 Banking & Finance Manager
 
-## Getting Started
+An all-in-one modern finance management app built with **Next.js**, **Plaid**, **Appwrite**, **Chart.js**, **Tailwind CSS**, and **Sentry** — giving users full control over their personal finances with real-time insights, bank integration, and budget tracking.
 
-First, run the development server:
+---
+
+## 📱 Live Preview
+
+🚀 [Click here to launch the app](#)  
+🛠️ *(Link your deployment when ready)*
+
+---
+
+## 📦 Tech Stack
+
+| Tech           | Role                                         |
+|----------------|----------------------------------------------|
+| **Next.js**    | App framework & routing                      |
+| **Plaid**      | Secure bank account integration              |
+| **Appwrite**   | Backend-as-a-Service (Auth, DB, Storage)     |
+| **Chart.js**   | Data visualization & financial analytics     |
+| **Tailwind CSS** | Responsive UI styling                      |
+| **Sentry**     | Error tracking & monitoring                  |
+
+---
+
+## 🧠 Features
+
+- ✅ Link real bank accounts via **Plaid**
+- ✅ Visual dashboards with **Chart.js**
+- ✅ Secure authentication & data storage with **Appwrite**
+- ✅ Real-time expense/income tracking
+- ✅ Custom categories & budgeting
+- ✅ Light/dark mode UI with **Tailwind CSS**
+- ✅ Error reporting via **Sentry**
+
+---
+
+## ⚙️ Setup & Installation
 
 ```bash
+git clone https://github.com/yourusername/finance-manager.git
+cd finance-manager
+
+# Install dependencies
+npm install
+
+# Add your env variables
+cp .env.example .env.local
+
+Edit your .env.local:
+
+NEXT_PUBLIC_APPWRITE_ENDPOINT=...
+NEXT_PUBLIC_APPWRITE_PROJECT=...
+NEXT_PUBLIC_PLAID_CLIENT_ID=...
+NEXT_PUBLIC_PLAID_SECRET=...
+NEXT_PUBLIC_SENTRY_DSN=...
+
+Then:
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🌐 Go to: http://localhost:3000
+📊 Dashboard Preview
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+    Sample financial chart using Chart.js:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+🔐 Security First
 
-## Learn More
+    OAuth-based authentication via Appwrite
 
-To learn more about Next.js, take a look at the following resources:
+    Secure Plaid link tokens
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    Errors tracked & monitored with Sentry
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+    Sanity-checked inputs and backend validation
 
-## Deploy on Vercel
+📁 Folder Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+src/
+│
+├── app/             # Next.js app directory
+├── components/      # Reusable components
+├── lib/             # Plaid, Appwrite, Sentry configs
+├── constants/       # App-wide constants
+├── styles/          # Tailwind + custom CSS
+├── utils/           # Helper functions
+└── assets/          # Images & icons
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+🧑‍💻 Developer Notes
+
+    Built with ❤️ by Natan Muleta
+
+    Contributions and suggestions are welcome!
+
+    Open to feedback — feel free to open an issue.
+
+🛡 License
+
+MIT License © 2025 Natan Muleta
+
+
+---
+
+## 🔥 Optional Ideas to Make It More Interactive:
+
+- Add **GitHub Badges** for build status, license, etc.
+- Embed a Loom or GIF video of the app in action
+- Add a **Roadmap** section using checkboxes
+- Include mock login credentials for demo (e.g., test@test.com / test123)
+
+---
+
+Let me know if you'd like help customizing it further — for example, if you're using **Git
