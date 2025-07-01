@@ -1,6 +1,6 @@
-import HeaderBox from "@/components/ui/HeaderBox";
+import HeaderBox from "@/components/HeaderBox";
 const Home = () => {
-  const loggedIn = { firstName: "Pivnati" };
+  const loggedIn = { firstName: "Adrian" };
   return (
     <section className="home">
       <div className="home-content">
@@ -11,11 +11,7 @@ const Home = () => {
             user={loggedIn?.firstName || "Guest"}
             subtext="Access and manage your account and transaction efficiently"
           />
-          <TotalBalanceBox 
-            accounts={accountsData}
-            totalBanks={accounts?.totalBanks}
-            totalCurrentBalance={accounts?.totalCurrentBalance}
-          />
+        
         </header>
       </div>
     </section>
