@@ -1,6 +1,7 @@
-import type { Config } from "tailwindcss";
+// tailwind.config.js
 
-const config = {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   darkMode: ["class"],
   content: [
     "./pages/**/*.{ts,tsx}",
@@ -8,6 +9,10 @@ const config = {
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
     "./constants/**/*.{ts,tsx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   prefix: "",
   theme: {
@@ -20,14 +25,9 @@ const config = {
     },
     extend: {
       colors: {
-        fill: {
-          1: "rgba(255, 255, 255, 0.10)",
-        },
+        fill: { 1: "rgba(255, 255, 255, 0.10)" },
         bankGradient: "#0179FE",
-        indigo: {
-          500: "#6172F3",
-          700: "#3538CD",
-        },
+        indigo: { 500: "#6172F3", 700: "#3538CD" },
         success: {
           25: "#F6FEF9",
           50: "#ECFDF3",
@@ -52,13 +52,8 @@ const config = {
           700: "#175CD3",
           900: "#194185",
         },
-        sky: {
-          1: "#F3F9FF",
-        },
-        black: {
-          1: "#00214F",
-          2: "#344054",
-        },
+        sky: { 1: "#F3F9FF" },
+        black: { 1: "#00214F", 2: "#344054" },
         gray: {
           25: "#FCFCFD",
           200: "#EAECF0",
@@ -104,6 +99,4 @@ const config = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config;
-
-export default config;
+};

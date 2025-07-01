@@ -5,11 +5,11 @@ const Home = () => {
     <section className="home">
       <div className="home-content">
         <header className="home-header">
-          <HeaderBox
+        <HeaderBox 
             type="greeting"
             title="Welcome"
-            user={loggedIn?.firstName || "Guest"}
-            subtext="Access and manage your account and transaction efficiently"
+            user={loggedIn?.firstName || 'Guest'}
+            subtext="Access and manage your account and transactions efficiently."
           />
         
         </header>
