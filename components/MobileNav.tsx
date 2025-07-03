@@ -1,5 +1,5 @@
 "use client"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetClose, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { sidebarLinks } from "@/constants";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
@@ -24,45 +24,41 @@ const MobileNav = ({ user }: MobileNavProps) => {
           <Link
             href="/"
             className="
-            mb-12 cursor-pointer flex items-center gap-2"
+             cursor-pointer flex items-center gap-1 px-4" 
           >
             <Image
               src="/icons/logo.svg"
               width={34}
               height={34}
-              alt={"logo"}
-              className="size-[24px]
-                      max-xl:size-14"
+              alt={"Horizon Logo"}
             />
+            <h1 className="text-26 font-ibm-plex-serif font-bold text-black-1">
+              Horizon
+            </h1>
           
           </Link>
           {sidebarLinks.map((item) => {
             const isActive =
               pathname === item.route || pathname.startsWith(`${item.route}`);
             return (
-              <Link
-                href={item.route}
-                key={item.label}
-                className={cn(
-                  "sidebar-links flex items-center gap-3 px-4 py-2 rounded-lg transition-colors duration-200",
-                  {
-                    "bg-bank-gradient text-white shadow-md": isActive,
-                    "hover:bg-gray-100": !isActive,
-                  }
-                )}
+              <SheetClose asChild key={item.route}>
+              <Link href={item.route} key={item.label}
+                className={cn('mobilenav-sheet_close w-full', { 'bg-bank-gradient': isActive })}
               >
-                <div className="relative size-6 flex-shrink-0">
-                  <Image
+                  <Image 
                     src={item.imgURL}
                     alt={item.label}
-                    fill
-                    className={cn("object-contain", {
-                      "brightness-[3] invert-0": isActive,
+                    width={20}
+                    height={20}
+                    className={cn({
+                      'brightness-[3] invert-0': isActive
                     })}
                   />
-                </div>
-                <span className="text-sm font-medium">{item.label}</span>
+                <p className={cn("text-16 font-semibold text-black-2", { "text-white": isActive })}>
+                  {item.label}
+                </p>
               </Link>
+            </SheetClose>
             );
           })}
         </SheetContent>
