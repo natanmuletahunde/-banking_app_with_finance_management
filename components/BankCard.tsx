@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-const BankCard = ({ account, userName,  }: CreditCardProps) => {
+const BankCard = ({ account, userName, }: CreditCardProps) => {
 
   console.log(account);
   return (
@@ -49,14 +49,6 @@ const BankCard = ({ account, userName,  }: CreditCardProps) => {
             className="ml-5"
           />
         </div>
-
-        <Image 
-          src="/icons/lines.png"
-          width={316}
-          height={190}
-          alt="lines"
-          className="absolute top-0 left-0"
-        />
       </Link>
 
     </div>
