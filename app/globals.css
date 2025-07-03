@@ -124,7 +124,7 @@
   .total-balance-chart {
     @apply flex size-full max-w-[100px] items-center sm:max-w-[120px];
   }
-
+     
   .total-balance-label {
     @apply text-14 font-medium text-gray-600;
   }
