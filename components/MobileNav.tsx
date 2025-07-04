@@ -35,7 +35,6 @@ const MobileNav = ({ user }: MobileNavProps) => {
             <h1 className="text-26 font-ibm-plex-serif font-bold text-black-1">
               Horizon
             </h1>
-          
           </Link>
           {sidebarLinks.map((item) => {
             const isActive =
