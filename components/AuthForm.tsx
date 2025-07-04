@@ -6,27 +6,23 @@ import React, { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
-import {
-  Form,
-} from "@/components/ui/form";
+import { Form } from "@/components/ui/form";
 import { z } from "zod";
 import CustomInput from "@/components/CustomInput";
-const formSchema = z.object({
-  email: z.string().email(),
-});
-
+import { authFormSchema } from "@/lib/utils";
 const AuthForm = ({ type }: { type: string }) => {
   const [user, setUser] = useState(null);
 
   // 1. Define form
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof authFormSchema>>({
+    resolver: zodResolver(authFormSchema),
     defaultValues: {
       email: "",
+      password: "",
     },
   });
   // 2. Handle form submit
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  function onSubmit(values: z.infer<typeof authFormSchema>) {
     console.log(values);
   }
 
@@ -64,53 +60,19 @@ const AuthForm = ({ type }: { type: string }) => {
       ) : (
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-            {/* <FormField
+            <CustomInput
               control={form.control}
               name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="email"
-                      placeholder="Enter your email"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage className="text-red-500 text-sm mt-1" />
-                </FormItem>
-              )}
-            /> */}
-
-            <CustomInput
-              form={form}
-              name="username"
-              placeholder="enter your username"
-              label="username"
+              placeholder="enter your Email"
+              label="Email"
             />
             <CustomInput
-              form={form}
+              control={form.control}
               name="password"
               placeholder="enter your password"
-              label="password"
+              label="Password"
             />
-            {/* <FormField
-              control={form.control}
-              name="Password"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Password</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="Password"
-                      placeholder="Enter your Password"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage className="text-red-500 text-sm mt-1" />
-                </FormItem>
-              )}
-            /> */}
+
             <Button type="submit">Submit</Button>
           </form>
         </Form>
