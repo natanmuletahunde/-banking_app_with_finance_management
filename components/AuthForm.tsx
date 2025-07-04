@@ -62,32 +62,44 @@ const AuthForm = ({ type }: { type: string }) => {
           {/* Display user information or link account form here */}
         </div>
       ) : (
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-            <CustomInput
-              control={form.control}
-              name="email"
-              placeholder="enter your Email"
-              label="Email"
-            />
-            <CustomInput
-              control={form.control}
-              name="password"
-              placeholder="enter your password"
-              label="Password"
-            />
-          <Button type="submit" className=" form-btn">
-            {isLoading ? (
-              <>
-                 <Loader2 size={20} 
-                 className='animate-spin'/> &nbsp;
-                Loading...
-              </>
-            ):
-            type === 'sign-in' ? "Sign In" : "Sign Up"}
-          </Button>
-          </form>
-        </Form>
+        <><Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+              <CustomInput
+                control={form.control}
+                name="email"
+                placeholder="enter your Email"
+                label="Email" />
+              <CustomInput
+                control={form.control}
+                name="password"
+                placeholder="enter your password"
+                label="Password" />
+              <div>
+                <Button type="submit" disabled={isLoading} className="form-btn">
+                  {isLoading ? (
+                    <>
+                      <Loader2 size={20} className="animate-spin" /> &nbsp;
+                      Loading...
+                    </>
+                  ) : type === "sign-in" ? (
+                    "Sign In"
+                  ) : (
+                    "Sign Up"
+                  )}
+                </Button>
+              </div>
+            </form>
+          </Form>
+          <footer className="flex justify-center gap-1">
+            <p className="text-14 font-normal text-gray-600">
+              {type === 'sign-in'
+              ? "Don't have an account?"
+              : "Already have an account?"}
+            </p>
+            <Link href={type === 'sign-in' ? '/sign-up' : '/sign-in'} className="form-link">
+              {type === 'sign-in' ? 'Sign up' : 'Sign in'}
+            </Link>
+          </footer>
       )}
     </section>
   );
