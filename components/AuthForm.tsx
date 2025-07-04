@@ -12,7 +12,7 @@ import CustomInput from "@/components/CustomInput";
 import { authFormSchema } from "@/lib/utils";
 const AuthForm = ({ type }: { type: string }) => {
   const [user, setUser] = useState(null);
-  const [ isLoading, setIsLoading ] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   // 1. Define form
   const form = useForm<z.infer<typeof authFormSchema>>({
@@ -24,11 +24,10 @@ const AuthForm = ({ type }: { type: string }) => {
   });
   // 2. Handle form submit
   function onSubmit(values: z.infer<typeof authFormSchema>) {
-      setIsLoading(true);
-      setIsLoading(false);
-    console.log(values);          // ← this logs form data
+    setIsLoading(true);
+    setIsLoading(false);
+    console.log(values); // ← this logs form data
   }
-  
 
   return (
     <section className="auth-form">
@@ -76,15 +75,7 @@ const AuthForm = ({ type }: { type: string }) => {
               placeholder="enter your password"
               label="Password"
             />
-
-            <Button  className="form-btn" type="submit">{
-              isLoading ?  (
-                <>
-                 <Loder2 size={20}
-                 className="animate-spin"/> &nbsp;
-
-              )}
-              </Button>
+          <Button type="submit" className=" form-btn"></Button>
           </form>
         </Form>
       )}
