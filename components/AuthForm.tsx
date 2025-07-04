@@ -11,6 +11,7 @@ import { z } from "zod";
 import CustomInput from "@/components/CustomInput";
 import { authFormSchema } from "@/lib/utils";
 import { Loader2 } from "lucide-react";
+import { signIn, signUp } from "@/lib/actions/user.action";
 
 const AuthForm = ({ type }: { type: string }) => {
   const [user, setUser] = useState(null);
