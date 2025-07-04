@@ -15,18 +15,20 @@ import { Loader2 } from "lucide-react";
 const AuthForm = ({ type }: { type: string }) => {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+   
 
+  const formSchema = authFormSchema(type);
   // 1. Define form
-  const form = useForm<z.infer<typeof authFormSchema>>({
-    resolver: zodResolver(authFormSchema),
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
       password: "",
     },
-  }) as UseFormReturn<z.infer<typeof authFormSchema>>;
+  })  
 
   // 2. Handle form submit
-  function onSubmit(values: z.infer<typeof authFormSchema>) {
+  function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
     console.log(values); // ← logs form data
     setIsLoading(false);
