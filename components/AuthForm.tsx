@@ -30,9 +30,15 @@ const AuthForm = ({ type }: { type: string }) => {
   // 2. Handle form submit
   function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
-    console.log(values); // ← logs form data
-    setIsLoading(false);
+  
+    // Simulate a delay like an API call
+    setTimeout(() => {
+      console.log("Form submitted values:", values); // ✅ Now logs in browser
+      setIsLoading(false);
+    }, 1000); // 1 second delay
   }
+  
+  
 
   return (
     <section className="auth-form">
@@ -71,6 +77,7 @@ const AuthForm = ({ type }: { type: string }) => {
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             {type === 'sign-up' && (
                 <>
+                <div></div>
                   <div className="flex gap-4">
                     <CustomInput control={form.control} name='firstName' label="First Name" placeholder='Enter your first name' />
                     <CustomInput control={form.control} name='lastName' label="Last Name" placeholder='Enter your first name' />
