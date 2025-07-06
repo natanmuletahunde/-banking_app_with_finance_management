@@ -12,29 +12,28 @@ import CustomInput from "@/components/CustomInput";
 import { authFormSchema } from "@/lib/utils";
 import { Loader2 } from "lucide-react";
 import { signIn, signUp } from "@/lib/actions/user.action";
+import { useRouter } from "next/navigation"; // ✅ Import router
 
 const AuthForm = ({ type }: { type: string }) => {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-   
+  const router = useRouter(); // ✅ Initialize router
 
   const formSchema = authFormSchema(type);
-  // 1. Define form
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
       password: "",
     },
-  })  
+  });
 
-  // 2. Handle form submit
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
-    setIsLoading(true)
+    setIsLoading(true);
     try {
-      console.log("Submitted data", data) // ✅ log data in browser console
-  
-      if (type === 'sign-up') {
+      console.log("Submitted data", data);
+
+      if (type === "sign-up") {
         const userData = {
           firstName: data.firstName!,
           lastName: data.lastName!,
@@ -46,25 +45,25 @@ const AuthForm = ({ type }: { type: string }) => {
           ssn: data.ssn!,
           email: data.email,
           password: data.password,
+        };
+
+        const newUser = await signUp(userData);
+        console.log("User created:", newUser);
+
+        if (newUser) {
+          router.push("/"); // ✅ Redirect on success
         }
-  
-        const newUser = await signUp(userData)
-        console.log("User created:", newUser) // ✅ log user returned
-  
-        setUser(newUser)
       }
-  
-      if (type === 'sign-in') {
-        // not modified
+
+      if (type === "sign-in") {
+        // sign-in logic here
       }
     } catch (error) {
-      console.log("Sign-up error:", error) // ✅ log any JS error
+      console.log("Sign-up error:", error);
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
-  
-  
+  };
 
   return (
     <section className="auth-form">
@@ -94,29 +93,67 @@ const AuthForm = ({ type }: { type: string }) => {
       </header>
 
       {user ? (
-        <div className="flex flex-col gap-4">
-          {/* Display user information or link account form here */}
-        </div>
+        <div className="flex flex-col gap-4"></div>
       ) : (
         <>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-            {type === 'sign-up' && (
+              {type === "sign-up" && (
                 <>
-                <div></div>
+                  <div></div>
                   <div className="flex gap-4">
-                    <CustomInput control={form.control} name='firstName' label="First Name" placeholder='Enter your first name' />
-                    <CustomInput control={form.control} name='lastName' label="Last Name" placeholder='Enter your first name' />
+                    <CustomInput
+                      control={form.control}
+                      name="firstName"
+                      label="First Name"
+                      placeholder="Enter your first name"
+                    />
+                    <CustomInput
+                      control={form.control}
+                      name="lastName"
+                      label="Last Name"
+                      placeholder="Enter your first name"
+                    />
                   </div>
-                  <CustomInput control={form.control} name='address1' label="Address" placeholder='Enter your specific address' />
-                  <CustomInput control={form.control} name='city' label="City" placeholder='Enter your city' />
+                  <CustomInput
+                    control={form.control}
+                    name="address1"
+                    label="Address"
+                    placeholder="Enter your specific address"
+                  />
+                  <CustomInput
+                    control={form.control}
+                    name="city"
+                    label="City"
+                    placeholder="Enter your city"
+                  />
                   <div className="flex gap-4">
-                    <CustomInput control={form.control} name='state' label="State" placeholder='Example: NY' />
-                    <CustomInput control={form.control} name='postalCode' label="Postal Code" placeholder='Example: 11101' />
+                    <CustomInput
+                      control={form.control}
+                      name="state"
+                      label="State"
+                      placeholder="Example: NY"
+                    />
+                    <CustomInput
+                      control={form.control}
+                      name="postalCode"
+                      label="Postal Code"
+                      placeholder="Example: 11101"
+                    />
                   </div>
                   <div className="flex gap-4">
-                    <CustomInput control={form.control} name='dateOfBirth' label="Date of Birth" placeholder='YYYY-MM-DD' />
-                    <CustomInput control={form.control} name='ssn' label="SSN" placeholder='Example: 1234' />
+                    <CustomInput
+                      control={form.control}
+                      name="dateOfBirth"
+                      label="Date of Birth"
+                      placeholder="YYYY-MM-DD"
+                    />
+                    <CustomInput
+                      control={form.control}
+                      name="ssn"
+                      label="SSN"
+                      placeholder="Example: 1234"
+                    />
                   </div>
                 </>
               )}
@@ -149,7 +186,6 @@ const AuthForm = ({ type }: { type: string }) => {
             </form>
           </Form>
 
-          {/* ✅ Fixed Footer (properly inside JSX fragment) */}
           <footer className="flex justify-center gap-1 mt-4">
             <p className="text-14 font-normal text-gray-600">
               {type === "sign-in"

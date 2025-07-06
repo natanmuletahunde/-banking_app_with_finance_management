@@ -10,7 +10,7 @@ export async function createSessionClient() {
 
   const session = (await cookies()).get("appwrite-session");
 
-  if (!session || !session.value) {
+  if (!session?.value) {
     throw new Error("No session");
   }
 
@@ -30,7 +30,7 @@ export async function createAdminClient() {
     .setKey(process.env.NEXT_APPWRITE_KEY!);
 
   return {
-    get account() {  
+    get account() {
       return new Account(client);
     },
     get database() {
@@ -38,6 +38,6 @@ export async function createAdminClient() {
     },
     get user() {
       return new Users(client);
-    }
+    },
   };
 }
