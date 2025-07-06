@@ -30,12 +30,11 @@ const AuthForm = ({ type }: { type: string }) => {
 
   // 2. Handle form submit
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
-    setIsLoading(true);
-
+    setIsLoading(true)
     try {
-      // Sign up with Appwrite & create plaid token
-      
-      if(type === 'sign-up') {
+      console.log("Submitted data", data) // ✅ log data in browser console
+  
+      if (type === 'sign-up') {
         const userData = {
           firstName: data.firstName!,
           lastName: data.lastName!,
@@ -46,28 +45,25 @@ const AuthForm = ({ type }: { type: string }) => {
           dateOfBirth: data.dateOfBirth!,
           ssn: data.ssn!,
           email: data.email,
-          password: data.password
-        }
-
-        const newUser = await signUp(userData);
-
-        setUser(newUser);
-      }
-
-      if(type === 'sign-in') {
-        const response = await signIn({
-          email: data.email,
           password: data.password,
-        })
-
-        if(response) router.push('/')
+        }
+  
+        const newUser = await signUp(userData)
+        console.log("User created:", newUser) // ✅ log user returned
+  
+        setUser(newUser)
+      }
+  
+      if (type === 'sign-in') {
+        // not modified
       }
     } catch (error) {
-      console.log(error);
+      console.log("Sign-up error:", error) // ✅ log any JS error
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
   }
+  
   
 
   return (
