@@ -140,6 +140,7 @@ const AuthForm = ({ type }: { type: string }) => {
                       label="Postal Code"
                       placeholder="Example: 11101"
                     />
+                  
                   </div>
                   <div className="flex gap-4">
                     <CustomInput
