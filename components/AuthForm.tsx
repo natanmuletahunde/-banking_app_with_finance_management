@@ -56,7 +56,7 @@ const AuthForm = ({ type }: { type: string }) => {
       }
 
       if (type === "sign-in") {
-        // sign-in logic here
+      
       }
     } catch (error) {
       console.log("Sign-up error:", error);
